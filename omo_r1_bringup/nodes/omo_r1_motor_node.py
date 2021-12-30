@@ -383,7 +383,7 @@ class OMOR1MotorNode:
       self.odom_vel.w = d_theta / d_time
 
       parent_frame_id = "odom"
-      child_frame_id = "base_footprint"
+      child_frame_id = "base_link"
 
       odom_orientation_quat = quaternion_from_euler(0, 0, self.odom_pose.theta)
       self.odom_broadcaster.sendTransform((self.odom_pose.x, self.odom_pose.y, 0.), odom_orientation_quat, timestamp_now, child_frame_id, parent_frame_id)
