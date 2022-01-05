@@ -383,7 +383,7 @@ class OMOR1MotorNode:
       self.odom_vel.w = d_theta / d_time
 
       parent_frame_id = "odom"
-      child_frame_id = "base_link"
+      child_frame_id = "base_footprint"
 
       odom_orientation_quat = quaternion_from_euler(0, 0, self.odom_pose.theta)
       self.odom_broadcaster.sendTransform((self.odom_pose.x, self.odom_pose.y, 0.), odom_orientation_quat, timestamp_now, child_frame_id, parent_frame_id)
@@ -454,7 +454,7 @@ class OMOR1MotorNode:
       self.joint.joint_vel = [wheel_ang_vel_left, wheel_ang_vel_right]
 
       joint_states = JointState()
-      joint_states.header.frame_id = "base_link"
+      joint_states.header.frame_id = "base_footprint"
       joint_states.header.stamp = rospy.Time.now()
       joint_states.name = self.joint.joint_name
       joint_states.position = self.joint.joint_pos
